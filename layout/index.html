@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,500,700,700i|Ubuntu+Condensed|Ubuntu+Mono" rel="stylesheet">
+
+    <!-- Ionicon Icons -->
+    <link rel="stylesheet" type="text/css" href="css/ionicons.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="favicons/manifest.json">
+    <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="header">
+          <img class="logo" src="images/logo.svg">
+          <h5><span class="brand-text">Task<em>Wars</em></span></h5>
+          <div class="pull-xs-right">
+            <a href="">
+              <i class="ion-social-github icon-big"></i>
+            </a>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="double-padding"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 offset-sm-2">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="input-wrapper">
+                <div class="new-task">
+                  <form>
+                    <div class="form-group">
+                      <label for="id-1"></label>
+                      <input class="new-task-input" type="task" class="form-control" id="id-1" autofocus="autofocus" autocomplete="off" aria-describedby="AddNewTask" placeholder="Enter your task">
+                    </div>
+                  </form>
+                </div>
+                <div class="task">
+                  <form class="text-truncate">
+                    <div class="custom-checkbox">
+                      <div class="custom-checkbox">
+                        <input type="checkbox" id="cb1">
+                        <label for="cb1" ><span>TasktastTask</span></label>
+                      </div>  
+                    </div>
+                  </form>
+                  <button type="button" class="btn btn-delete-task"></button>
+                </div>
+                <div class="task-footer">
+                  <p class="small text-muted">1 Task</p>
+                  <ul class="filter">
+                    <li><button type="button" class="btn btn-outline-primary btn-sm">All</button></li>
+                    <li><button type="button" class="btn btn-outline-primary btn-sm">Active</button></li>
+                    <li><button type="button" class="btn btn-outline-primary btn-sm">Done</button></li>
+                  </ul>
+                </div>
+              </div><!-- input-wrapper-end -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted small text-right">
+          <span class="brand-text">Task<em>Wars</em> · Version 0.0.0 · <a href="">Github</a> · <a href="">Twitter</a>
+        </span>
+      </div>
+    </footer>
+    
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      window.onload = function() {
+          document.getElementById("editable").focus();
+      };
+    </script>
+
+  </body>
+</html>
