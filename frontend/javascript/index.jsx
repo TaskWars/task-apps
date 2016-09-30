@@ -34,7 +34,34 @@ class TaskApp extends React.Component {
           title: "Task 3",
           status: "active"
         }
-      ]
+      ],
+      newTask: ""
+    }
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
+  }
+
+  handleChange(event) {
+    let value = event.target.value
+    this.setState({newTask: value})
+  }
+
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      if(this.state.newTask.length != "") {
+        let addTask = {
+          title: this.state.newTask,
+          status: "active"
+        }
+        let tasks = [].concat(this.state.tasks)
+        tasks.unshift(addTask)
+
+        this.setState({
+          tasks: tasks,
+          newTask: ""
+        })
+      }
     }
   }
 
@@ -63,12 +90,10 @@ class TaskApp extends React.Component {
                 <div className="col-xs-12">
                   <div className="input-wrapper">
                     <div className="new-task">
-                      <form>
-                        <div className="form-group">
-                          <label htmlFor="id-1"></label>
-                          <input className="new-task-input" type="task" id="id-1" autoComplete="off" aria-describedby="AddNewTask" placeholder="Enter your task" />
-                        </div>
-                      </form>
+                      <div className="form-group">
+                        <label htmlFor="id-1"></label>
+                        <input className="new-task-input" type="task" name="newTask" id="id-1" autoComplete="off" aria-describedby="AddNewTask" placeholder="Enter your task" value={this.state.newTask} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+                      </div>
                     </div>
 
                     { this.state.tasks ? 
