@@ -277,4 +277,11 @@ input.new-task-input {
   text-decoration: line-through;
   color: #dddddd; }
 
+.custom-checkbox.deleted > [type="checkbox"] + label {
+  text-decoration: line-through;
+  color: red; }
+
+.custom-checkbox.deleted > [type="checkbox"] + label span {
+  color: #dddddd; }
+
 /*# sourceMappingURL=main.css.map */

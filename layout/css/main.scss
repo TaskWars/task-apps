@@ -15,6 +15,7 @@ $white: #FFFFFF;
 $offwhite: #FFFFFE;
 
 $green: #88C425;
+$red: red;
 
 
 // Mixins
@@ -365,6 +366,15 @@ input.new-task-input {
 
 .custom-checkbox > [type="checkbox"]:checked + label {
   text-decoration:line-through;
+  color: $midgrey;
+}
+
+.custom-checkbox.deleted > [type="checkbox"] + label {
+  text-decoration:line-through;
+  color: $red;
+}
+
+.custom-checkbox.deleted > [type="checkbox"] + label span {
   color: $midgrey;
 }
 

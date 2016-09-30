@@ -6,14 +6,12 @@ class Task extends React.Component {
     return (
       <div className="task">
         <div className="text-truncate">
-          <div className="custom-checkbox">
-            <div className="custom-checkbox">
-              <input type="checkbox" id={"cb" + this.props.index} checked={ this.props.task.status == "done" ? true : false } />
-              <label htmlFor={"cb" + this.props.index} ><span>{this.props.task.title}</span></label>
-            </div>  
+          <div className={ this.props.task.status == "deleted" ? "custom-checkbox deleted" : "custom-checkbox" }>
+            <input disabled={ this.props.task.status == "deleted" ? true : false } type="checkbox" id={"cb" + this.props.index} checked={ this.props.task.status == "done" ? true : false } onChange={ (event) => this.props.handleStatusChange(event.target.checked, this.props.index)} />
+            <label htmlFor={"cb" + this.props.index} ><span>{this.props.task.title}</span></label>
           </div>
         </div>
-        <button type="button" className="btn btn-delete-task"></button>
+        <button type="button" className="btn btn-delete-task" onClick={ () => this.props.handleStatusChange("delete", this.props.index)}></button>
       </div>
     )
   }
@@ -40,6 +38,7 @@ class TaskApp extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
+    this.handleStatusChange = this.handleStatusChange.bind(this)
   }
 
   handleChange(event) {
@@ -63,6 +62,21 @@ class TaskApp extends React.Component {
         })
       }
     }
+  }
+
+  handleStatusChange(event, index) {
+    let tasks = [].concat(this.state.tasks)
+    if(event == "delete") {
+      tasks[index].status = "deleted"
+    } else if(event == true) {
+      tasks[index].status = "done"
+    } else {
+      tasks[index].status = "active"
+    }
+    console.log(tasks)
+    this.setState({
+      tasks: tasks
+    })
   }
 
   render() {
@@ -97,15 +111,15 @@ class TaskApp extends React.Component {
                     </div>
 
                     { this.state.tasks ? 
-                      this.state.tasks.map(function(task, i) { return <Task task={task} key={i} index={i} /> })
+                      this.state.tasks.map(function(task, i) { return <Task task={task} key={i} index={i} handleStatusChange={this.handleStatusChange} /> }.bind(this))
                     : null }
 
                     <div className="task-footer">
                       <p className="small text-muted">{ this.state.tasks ? this.state.tasks.length : "0" } { !this.state.tasks || this.state.tasks && this.state.tasks.length > 1 ? "Tasks" : "Task" }</p>
                       <ul className="filter">
-                        <li><button type="button" className="btn btn-outline-primary btn-sm">All</button></li>
                         <li><button type="button" className="btn btn-outline-primary btn-sm">Active</button></li>
                         <li><button type="button" className="btn btn-outline-primary btn-sm">Done</button></li>
+                        <li><button type="button" className="btn btn-outline-primary btn-sm">Deleted</button></li>
                       </ul>
                     </div>
                   </div>
