@@ -1,7 +1,43 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+class Task extends React.Component {
+  render() {
+    return (
+      <div className="task">
+        <div className="text-truncate">
+          <div className="custom-checkbox">
+            <div className="custom-checkbox">
+              <input type="checkbox" id={"cb" + this.props.index} checked={ this.props.task.status == "done" ? true : false } />
+              <label htmlFor={"cb" + this.props.index} ><span>{this.props.task.title}</span></label>
+            </div>  
+          </div>
+        </div>
+        <button type="button" className="btn btn-delete-task"></button>
+      </div>
+    )
+  }
+}
+
 class TaskApp extends React.Component {
+  constructor() {
+    super();
+    this.state = { 
+      tasks: [
+        {
+          title: "Task 1",
+          status: "active"
+        }, {
+          title: "Task 2",
+          status: "done"
+        }, {
+          title: "Task 3",
+          status: "active"
+        }
+      ]
+    }
+  }
+
   render() {
     return (
       <div>
@@ -34,19 +70,13 @@ class TaskApp extends React.Component {
                         </div>
                       </form>
                     </div>
-                    <div className="task">
-                      <div className="text-truncate">
-                        <div className="custom-checkbox">
-                          <div className="custom-checkbox">
-                            <input type="checkbox" id="cb1" />
-                            <label htmlFor="cb1" ><span>TasktastTask</span></label>
-                          </div>  
-                        </div>
-                      </div>
-                      <button type="button" className="btn btn-delete-task"></button>
-                    </div>
+
+                    { this.state.tasks ? 
+                      this.state.tasks.map(function(task, i) { return <Task task={task} key={i} index={i} /> })
+                    : null }
+
                     <div className="task-footer">
-                      <p className="small text-muted">1 Task</p>
+                      <p className="small text-muted">{ this.state.tasks ? this.state.tasks.length : "0" } { !this.state.tasks || this.state.tasks && this.state.tasks.length > 1 ? "Tasks" : "Task" }</p>
                       <ul className="filter">
                         <li><button type="button" className="btn btn-outline-primary btn-sm">All</button></li>
                         <li><button type="button" className="btn btn-outline-primary btn-sm">Active</button></li>

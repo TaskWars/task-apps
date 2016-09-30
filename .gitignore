@@ -1,3 +1,6 @@
+#build-file
+frontend/javascript/task-app.js
+
 # Logs
 logs
 *.log
