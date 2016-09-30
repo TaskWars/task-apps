@@ -94,7 +94,7 @@ img.logo {
 .task .btn-delete-task {
   visibility: hidden;
   position: absolute;
-  top: 78px;
+  top: 0px;
   right: 10px;
   bottom: 0;
   font-size: 30px;
@@ -177,7 +177,8 @@ input.new-task-input {
 
 .task {
   border-bottom: 1px solid #ddd;
-  padding: 16px 16px 16px 16px; }
+  padding: 16px 16px 16px 16px;
+  position: relative; }
   @media (max-width: 48em) {
     .task {
       padding: 16px 6px 16px 6px; } }
