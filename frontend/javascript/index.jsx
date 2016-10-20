@@ -33,12 +33,14 @@ class TaskApp extends React.Component {
           status: "active"
         }
       ],
-      newTask: ""
+      newTask: "",
+      status_filter: null
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleStatusChange = this.handleStatusChange.bind(this)
+    this.handleFilterChange = this.handleFilterChange.bind(this)
   }
 
   handleChange(event) {
@@ -73,9 +75,14 @@ class TaskApp extends React.Component {
     } else {
       tasks[index].status = "active"
     }
-    console.log(tasks)
     this.setState({
       tasks: tasks
+    })
+  }
+
+  handleFilterChange(status) {
+    this.setState({
+      status_filter: status
     })
   }
 
@@ -111,15 +118,19 @@ class TaskApp extends React.Component {
                     </div>
 
                     { this.state.tasks ? 
-                      this.state.tasks.map(function(task, i) { return <Task task={task} key={i} index={i} handleStatusChange={this.handleStatusChange} /> }.bind(this))
+                      this.state.tasks.map(function(task, i) { 
+                        if(!this.state.status_filter || this.state.status_filter == task.status) {
+                          return <Task task={task} key={i} index={i} handleStatusChange={this.handleStatusChange} />
+                        }
+                      }.bind(this))
                     : null }
 
                     <div className="task-footer">
                       <p className="small text-muted">{ this.state.tasks ? this.state.tasks.length : "0" } { !this.state.tasks || this.state.tasks && this.state.tasks.length > 1 ? "Tasks" : "Task" }</p>
                       <ul className="filter">
-                        <li><button type="button" className="btn btn-outline-primary btn-sm">Active</button></li>
-                        <li><button type="button" className="btn btn-outline-primary btn-sm">Done</button></li>
-                        <li><button type="button" className="btn btn-outline-primary btn-sm">Deleted</button></li>
+                        <li><button type="button" className={ this.state.status_filter == "active" ? "btn btn-outline-primary btn-sm current" : "btn btn-outline-primary btn-sm"} onClick={this.handleFilterChange.bind(this, "active")}>Active</button></li>
+                        <li><button type="button" className={ this.state.status_filter == "done" ? "btn btn-outline-primary btn-sm current" : "btn btn-outline-primary btn-sm"} onClick={this.handleFilterChange.bind(this, "done")}>Done</button></li>
+                        <li><button type="button" className={ this.state.status_filter == "deleted" ? "btn btn-outline-primary btn-sm current" : "btn btn-outline-primary btn-sm"} onClick={this.handleFilterChange.bind(this, "deleted")}>Deleted</button></li>
                       </ul>
                     </div>
                   </div>

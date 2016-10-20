@@ -149,7 +149,7 @@ img.logo {
   color: $link-color;
 }
 
-.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary:active:hover {
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary:active:hover, .btn-outline-primary.current {
   background-color: transparent;
   border-color: $link-color-hover;
   color: $link-color-hover;
@@ -192,11 +192,11 @@ img.logo {
   border-color: $midgrey;
 }
 
-.filter button:hover, .filter button:focus, .filter button:active, .filter button:active:focus {
+/*.filter button:hover, .filter button:focus, .filter button:active, .filter button:active:focus {
   font-size: 80%;
   color: $grey;
   border-color: $grey;
-}
+}*/
 
 // Footer
 
